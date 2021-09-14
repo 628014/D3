@@ -24,16 +24,16 @@
     </div>
   </div>
   <script type="module">
-    import LifeTree from '../../../mi/lifeTree/LifeTree.js' 
-    import HorizontalTree from '../../../mi/tree/horizontal_tree.js'
-    d3.json('../../../mi/lifeTree//data.json').then((data) =>{
+    import LifeTree from '../../../mi/lifeTree/LifeTree_5120194818.js' 
+    import HorizontalTree from '../../../mi/tree/horizontal_tree_5120194818.js'
+    d3.json('../../../mi/lifeTree/data_5120194818.json').then((data) =>{
         let lifeTree = new LifeTree('lifeTree',data)
         .setColorKeys(["Bacteria", "Eukaryota", "Archaea"])
         .setMargin(150, 80, 150, 80)
         .init()
         .render();
     })
-    d3.json('../../../mi/tree/data.json').then((data) =>{
+    d3.json('../../../mi/tree/data_5120194818.json').then((data) =>{
       let horizontalTree = new HorizontalTree('dTree',data).setMargin(50, 50, 50, 50)
         .init()
         .render();
