@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实验一</title>
+  <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.css" rel="stylesheet">
+  <script src="../../Code5120194818/Resources/lib/d3.js"></script>
+</head>
+
+
+<body>
+  <div class="continue" style="width : 100vw ; height :100vh">
+    <div class="row" style="width: 100%;">
+      <!-- 生命之树 -->
+      <section id='lifeTree' class="col" style="height:100vh;">
+      </section>
+      <!-- D3画出的树 -->
+      <section id='dTree' class="col" style="height:100vh;">
+
+      </section>
+    </div>
+  </div>
+  <script type="module">
+    import LifeTree from '../../../mi/lifeTree/LifeTree.js' 
+    import HorizontalTree from '../../../mi/tree/horizontal_tree.js'
+    d3.json('../../../mi/lifeTree//data.json').then((data) =>{
+        let lifeTree = new LifeTree('lifeTree',data)
+        .setColorKeys(["Bacteria", "Eukaryota", "Archaea"])
+        .setMargin(150, 80, 150, 80)
+        .init()
+        .render();
+    })
+    d3.json('../../../mi/tree/data.json').then((data) =>{
+      let horizontalTree = new HorizontalTree('dTree',data).setMargin(50, 50, 50, 50)
+        .init()
+        .render();
+    })
+
+  </script>
+
+
+
+</body>
+
+</html>
