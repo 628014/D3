@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实验二</title>
+  <script src="../Resources/lib/d3.js"></script>
+
+</head>
+
+<body>
+  <script>
+    d3.csv('../../DataVisCode/Resources/data/nation.csv').then((data) => {
+      console.log(data)
+      data.map((ele) => {
+        console.log(ele)
+      })
+    })
+  </script>
+
+</body>
+
+</html>

@@ -10,18 +10,41 @@
 <body>
 	<svg width='1200' height='800'></svg>
 	<script type='text/javascript'>
-
-		d3.csv('../Resources/data/circle.csv')
+		d3.csv('../Resources/data/assignment.csv')
 			.then(dataset => {
+				console.log(dataset)
 				d3.select('svg')
-					.selectAll('circle')
+					.selectAll('rect')
 					.data(dataset)
-					.enter()
-					.append('circle') //加载数据，生成占位元素
-					.attr('cx', d => d.center_x)
-					.attr('cy', d => d.center_y)
-					.attr('r', d => d.radius)
-					.attr('fill', (d, i) => d3.schemeCategory10[i])
+					.join(
+						enter => {
+							enter = enter.append("rect")
+								.style("background-color", "rgba(121,189,154,1)")
+								.style('text-align', 'right')
+							console.log(enter);
+							return enter;
+						}, updata => {
+							updata.style("background-color", "rgba(59,134,134,1)")
+								.transition()
+							console.log(updata);
+							return updata;
+						},
+						exit => {
+							exit.remove()
+							console.log(exit);
+
+							return exit;
+						}
+
+					)
+					.attr('x', 10)
+					.attr('y', (d, i) => {
+						return i * 50
+					})
+					.attr('width', d => d.length)
+					.attr('height', 10)
+					.attr('fill', d => d.color)
+
 			})
 	</script>
 </body>
