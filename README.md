@@ -148,7 +148,7 @@ Selection.append,Selection.insert,Selection.select
 多个结构相同的选择集做相同的工作
 
 
-### 深入理解数据绑定
+### 4. 深入理解数据绑定
 
 #### Selection.data
 
@@ -171,4 +171,43 @@ Selection.data()的返回值，虽然是一个Selection对象，但该对象有�
 - _enter：数据绑定的过程中，data方法内部会找出多余的数据项，多余了N个数据就意味着需要新增N个DOM元素，这些新增的DOM元素,就会存储到_enter属性中。Selection.enter()取到该属性的值，该方法的返回值是一个包含待添加结点的Selection对象。我们可以将这个待添加结点称呼为虚拟DOM。对该虚拟DOM使用.append()方法，d3.js就会帮助我们将对于的DOM元素添加到页面上。
 - _exit：数据绑定的过程中，data方法内部会找出多余的DOM元素，多余了N个DOM元素，就意味着要删除这N个DOM元素，这些需要移除的DOM元素,就会被存储到_exit属性中,Selection.exit()取到该属性的值，该方法的返回值是一个包含待删除结点的Selection对象。对该对象使用.remove()，d3.js就会帮助我们将其移除。
 
+
+### 5. 实验结果
+
+完成动态绑定的柱状图
+   
+   读取数据 ：
+   ```js
+     const createBar = async () => {
+      /**
+       * 1.1 读取数据
+       * 1.2 聚合数据
+       * 1.3 转换数据
+       */
+      const nationData = await d3.csv(
+        "../../DataVisCode/Resources/data/nation.csv"
+      );
+      const groupData = d3.groups(nationData, (d) => d["Year"]);
+      const data = groupData.map(([year, value]) =>
+        Object.entries(value[0])
+        .slice(1)
+        .map((d) => ({
+          year: +year,
+          nation: d[0],
+          value: +d[1],
+        }))
+      );
+   }
+
+   ```
+   收获 ：
+
+   最开始学习的是promise的then方法，但是随着学习的过程中发现async 相比较promise而言，更加简洁干净, 看起来像同步代码，并且提供错误处理的方法，避免了更多的嵌套，凸显了中间值，并且提高了代码的调试性能，所以转战使用async/await;
+
+   绘制图形 ：
+
+![柱状图](../D3/mi/Resources/img/bar.png)
+
+
+# 实验3
 
