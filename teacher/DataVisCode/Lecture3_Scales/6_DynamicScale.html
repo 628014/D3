@@ -23,6 +23,8 @@
 			.domain([0, d3.max(dataset)]) //动态设置输入域
 			.range([0, 300])
 
+		const color = d3.scaleSequential(dataset, d3.interpolateReds)
+
 		d3.select('svg')
 			.selectAll('rect')
 			.data(dataset)
@@ -32,7 +34,7 @@
 			.attr('y', (d, i) => i * 21)
 			.attr('width', d => scale(d))
 			.attr('height', 20)
-			.attr('fill', 'steelblue')
+			.attr('fill', d => color(d))
 	</script>
 </body>
 

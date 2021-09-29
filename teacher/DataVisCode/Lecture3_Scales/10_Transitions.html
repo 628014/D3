@@ -10,14 +10,38 @@
 <body>
 	<svg width='1200px' height='800px'></svg>
 	<script type='text/javascript'>
-
 		//定义边距
-		const margin = { top: 100, left: 200 }
+		const margin = {
+			top: 100,
+			left: 200
+		}
 
-		const dataset = [{ weekday: '周一', value: 15 }, { weekday: '周二', value: 95 },
-		{ weekday: '周三', value: 80 }, { weekday: '周四', value: 47 },
-		{ weekday: '周五', value: 60 }, { weekday: '周六', value: 55 },
-		{ weekday: '周日', value: 36 }]
+		const dataset = [{
+				weekday: '周一',
+				value: 15
+			}, {
+				weekday: '周二',
+				value: 95
+			},
+			{
+				weekday: '周三',
+				value: 80
+			}, {
+				weekday: '周四',
+				value: 47
+			},
+			{
+				weekday: '周五',
+				value: 60
+			}, {
+				weekday: '周六',
+				value: 55
+			},
+			{
+				weekday: '周日',
+				value: 36
+			}
+		]
 
 		//数据抽取
 		const maxValue = d3.max(dataset, data => data.value)
@@ -29,11 +53,11 @@
 		const xScale = d3.scaleLinear()
 			.domain([0, maxValue])
 			.range([0, 300])
-			.nice()//刻度优化
+			.nice() //刻度优化
 
 		const yScale = d3.scaleBand()
 			.domain(weekday)
-			.range([barHeight, 0])//屏幕坐标的Y轴和笛卡尔直角坐标系的Y轴上下相反
+			.range([barHeight, 0]) //屏幕坐标的Y轴和笛卡尔直角坐标系的Y轴上下相反
 			.padding(0.05)
 
 		const svg = d3.select('svg')
@@ -52,8 +76,8 @@
 			.attr('fill', 'steelblue')
 
 		//定义坐标轴样式
-		const xAxis = d3.axisBottom(xScale).ticks(5)//.tickFormat(d3.format('.0%'))
-		const yAxis = d3.axisLeft(yScale).tickSize(0)//Y轴
+		const xAxis = d3.axisBottom(xScale).ticks(5) //.tickFormat(d3.format('.0%'))
+		const yAxis = d3.axisLeft(yScale).tickSize(0) //Y轴
 
 		//绘制坐标轴
 		g.append('g').attr('transform', `translate(0, ${barHeight})`).call(xAxis)
@@ -62,13 +86,16 @@
 		//设置坐标轴文本字体大小
 		d3.selectAll('.tick text').attr('font-size', '16px')
 
-		d3.selectAll('rect')//选择第一个矩形
+		d3.selectAll('rect') //选择第一个矩形
 			.attr('width', 0)
-			.transition()//设置动画过渡
-			.duration(1000)//设置过渡时间
+			.attr('x', 0)
+			.attr('y', 0)
+			.transition() //设置动画过渡
+			.duration(1000) //设置过渡时间
 			.attr('width', d => xScale(d.value))
-			// .attr('fill', 'red')//设置过渡结束状态
+			.attr('y', d => yScale(d.weekday))
 
+		// .attr('fill', 'red')//设置过渡结束状态
 	</script>
 </body>
 
