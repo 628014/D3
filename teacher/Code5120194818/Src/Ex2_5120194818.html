@@ -20,6 +20,7 @@
       const nationData = await d3.csv(
         "../../DataVisCode/Resources/data/nation.csv"
       );
+      console.log(nationData)
       const groupData = d3.groups(nationData, (d) => d["Year"]);
       const data = groupData.map(([year, value]) =>
         Object.entries(value[0])
