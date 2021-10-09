@@ -10,7 +10,6 @@
 <body>
     <svg width='1200px' height='800px'></svg>
     <script type='text/javascript'>
-
         const svg = d3.select('svg')
         //随机生成符号类型及位置
         const data = new Array
@@ -25,7 +24,7 @@
             data.push(obj)
         }
 
-        const symbolGenerator = d3.symbol().size(36)//创建和配置符号生成器
+        const symbolGenerator = d3.symbol().size(36) //创建和配置符号生成器
         const symbolScale = d3.scaleOrdinal(d3.symbols).domain(['A', 'B', 'C', 'D', 'E', 'F', 'G'])
 
         svg.selectAll('path').data(data).enter().append('path')
@@ -34,7 +33,6 @@
             .attr('fill', 'none')
             .attr('stroke', d => d.typeColor)
             .attr('stroke-width', 2)
-
     </script>
 </body>
 
