@@ -210,4 +210,41 @@ Selection.data()的返回值，虽然是一个Selection对象，但该对象有�
 
 
 # 实验3
+### 实现内容 
+1. 完成动态散点图的绘制：
 
+
+核心代码 ：
+
+```js
+  <script type="module">
+    import Bubble from './bubble.js'
+    // 读取数据
+    const create = async () =>  {
+
+      const data = await d3.csv(
+        "../../DataVisCode/Resources/data/covid19.csv"
+      );
+
+      // 数据按照年份进行分组
+      let groupData =  Array.from(d3.group(data, d => d.date), ([key, value]) => ({key, value}))
+      let bubble = new Bubble('bubble', groupData);
+      bubble.render();
+    }
+    let start = create();
+  </script>
+```
+实现效果如下：
+
+
+![柱状图](../D3/mi/Resources/img/bubble.png)
+
+解决的问题 ：
+
+
+|  关键问题   | 解决办法  |
+|  ----  | ----  |
+| 1. 数据含有0，对于比例尺的选择，有一些比例尺是不能用的，并且我们要对0 做特殊处理，否则就是NAN  | 在我设置我的xScale和yScale的时候，当对应的横轴和纵轴出现特殊值的时候，会出现NAN的情况，由于开始是使用对数或者指数比例尺，有一些范围是不能从0开始的，不然算出来就是负值了，所以在进行选择后，又结合视频，就做了scaleLinear比例尺，并且设置对应的+d[this.ylabe] == 0为0 的时候，返回对应的0，其他是返回我比例尺后的值 |
+| 2. 比例尺的刻度表述  | 以前使用的刻度，基本没有对刻度尺进行设置，这次使用ticks和tickFormat来实现刻度设置和格式化，由于对于格式化不怎么熟悉，专门去查了官网文档，最终实现了视频的效果。 |
+| 3. 添加圆圈的时候，有课外作业实现格子的展示，所以想办法实现这个格子line  | 格子也就是line，每一个刻度要对应一个line，设置对应的颜色即可，我们知道xAxisGroup要实现x轴展示，就需要call上d3.axisBottom(this.xScale)能在创建后进行绘制；同样，我们要实现绑定的白色line，也需要call上对应的线条，在这里我使用下面的来实现格子.call(g => {g.selectAll("line").attr("stroke","white"); return g;}) |
+| 4. 实现数据更新，视图更新  | 我们这里，使用了group进行按照时间分组之后，得到对应的键是时间，值是各个国家的具体的数据的json对象，我们使用index = 0 作为初始化，每一次渲染之后，在规定的时间执行play（）函数，实现视图的更新，而play函数中，我们使用index++来改变我每一次所取得的数据，不断的再执行setDataIndex，再执行render，实现更新。当index到达原数据的length的时候，clearInterval，得到结束。 |
