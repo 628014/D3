@@ -10,28 +10,30 @@
 <body>
     <svg width='1200px' height='800px'></svg>
     <script type='text/javascript'>
-
         const svg = d3.select('svg')
-
+        const data = []
         const dataset = new Array
         for (let i = 0; i < 10; i++) {
-            let tempArr = [(i + 1) * 100, d3.randomInt(100, 300)()]
+            let tempArr = [(i + 1) * 100, d3.randomInt(100, 300)(), d3.randomInt(600, 800)()]
             dataset.push(tempArr)
         }
-
+        console.log(dataset)
+        // 不是一个二维数组，是一维数组，只是通过下标来获取
+        // 配置曲线生成器
         const lineGenerator = d3.line().curve(d3.curveCardinal)
-
+        // 绘制线，只有一条线,就直接一个path，不用再.data了
         svg.append('g').append('path')
             .attr('d', lineGenerator(dataset))
             .attr('fill', 'none')
             .attr('stroke', d3.schemeCategory10[0])
             .attr('stroke-width', 2)
-
+        // 绘制面积，也就是区域生成器，边界是什么样子需要我们设置一下
         const areaGenerator = d3.area()
             .x(d => d[0])
-            // .y0(d => d[1]+100)
-            .y0(400)
+            // 传输第二个参数，一个一维数组的下标访问
+            .y0(d => d[2])
             .y1(d => d[1])
+            // 绘制的曲线的形式是同一种曲线
             .curve(d3.curveCardinal)
 
         svg.append('g').append('path')
@@ -45,7 +47,6 @@
             .attr('cy', d => d[1])
             .attr('fill', d3.schemeCategory10[2])
             .attr('r', 5)
-
     </script>
 </body>
 

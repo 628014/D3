@@ -10,7 +10,6 @@
 <body>
     <svg width='1200px' height='800px'></svg>
     <script type='text/javascript'>
-        
         const svg = d3.select('svg')
         const textPos = [100, 230]
 
@@ -38,17 +37,6 @@
             .attr('transform', 'translate( 50, 450 )')
             .call(liner, data, d3.curveNatural, 'd3.curveNatural', textPos)
 
-        const lineTension = [1, 0.75, 0.5, 0.25, 0]
-        svg.append('g')
-            .attr('transform', 'translate( 350, 450 )')
-            .call(liner, data, lineTension.map(t => d3.curveCardinal.tension(t)), 'd3.curveCardinal', textPos)
-        svg.append('g')
-            .attr('transform', 'translate( 650, 450 )')
-            .call(liner, data, lineTension.map(t => d3.curveCatmullRom.alpha(t)), 'd3.curveCatmullRom', textPos)
-        svg.append('g')
-            .attr('transform', 'translate( 950, 450 )')
-            .call(liner, data, lineTension.map(t => d3.curveBundle.beta(t)), 'd3.curveBundle', textPos)
-
 
         function liner(g, data, curve, text, pos) {
             if (!(curve instanceof Array)) {
@@ -60,7 +48,10 @@
             const curveGenerator = d3.line()
             for (let i = 0; i < curve.length; i++) {
                 g.append('path')
-                    .attr('d', curveGenerator.curve(curve[i])(data))
+                    .attr('d', () => {
+                        console.log(curve[i])
+                        return curveGenerator.curve(curve[i])(data)
+                    })
                     .attr('fill', 'none')
                     .attr('stroke', scale(i))
             }
@@ -78,7 +69,6 @@
                 .attr('font-size', '1em')
                 .text(text)
         }
-
     </script>
 </body>
 

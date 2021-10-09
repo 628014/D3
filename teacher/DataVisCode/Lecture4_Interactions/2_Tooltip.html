@@ -10,14 +10,38 @@
 <body>
 	<svg width='1200px' height='500px'></svg>
 	<script type='text/javascript'>
-
 		//定义边距
-		const margin = { top: 100, left: 200 }
+		const margin = {
+			top: 100,
+			left: 200
+		}
 
-		const dataset = [{ weekday: '周一', value: 15 }, { weekday: '周二', value: 95 },
-		{ weekday: '周三', value: 80 }, { weekday: '周四', value: 47 },
-		{ weekday: '周五', value: 60 }, { weekday: '周六', value: 55 },
-		{ weekday: '周日', value: 36 }]
+		const dataset = [{
+				weekday: '周一',
+				value: 15
+			}, {
+				weekday: '周二',
+				value: 95
+			},
+			{
+				weekday: '周三',
+				value: 80
+			}, {
+				weekday: '周四',
+				value: 47
+			},
+			{
+				weekday: '周五',
+				value: 60
+			}, {
+				weekday: '周六',
+				value: 55
+			},
+			{
+				weekday: '周日',
+				value: 36
+			}
+		]
 
 		//数据抽取
 		const maxValue = d3.max(dataset, data => data.value)
@@ -29,11 +53,11 @@
 		const xScale = d3.scaleLinear()
 			.domain([0, maxValue])
 			.range([0, 300])
-			.nice()//刻度优化
+			.nice() //刻度优化
 
 		const yScale = d3.scaleBand()
 			.domain(weekday)
-			.range([barHeight, 0])//屏幕坐标的Y轴和笛卡尔直角坐标系的Y轴上下相反
+			.range([barHeight, 0]) //屏幕坐标的Y轴和笛卡尔直角坐标系的Y轴上下相反
 			.padding(0.05)
 
 		const svg = d3.select('svg')
@@ -46,7 +70,7 @@
 			.style('position', 'absolute')
 			.style('z-index', '10')
 			.style('color', 'darkorange')
-			.style('visibility', 'hidden')   // 一开始设置为不可见
+			.style('visibility', 'hidden') // 一开始设置为不可见
 			.style('text-anchor', 'middle')
 			.style('font-size', '2em')
 			.text('')
@@ -60,7 +84,10 @@
 			.attr('width', d => xScale(d.value))
 			.attr('height', yScale.bandwidth())
 			.attr('fill', 'steelblue')
-			.on('mousemove', (event, selectedObj) => {
+			.on('mouseenter', (event, selectedObj) => {
+				console.log(this)
+				// mouseenter 只检测进入，不检测元素里面的移动
+				// mousemove 是可以检测移动
 				tooltip.style('visibility', 'visible')
 					.style('left', `${d3.pointer(event)[0] + margin.left + 20 + 'px'}`)
 					.style('top', `${d3.pointer(event)[1] + margin.top + 'px'}`)
@@ -70,8 +97,8 @@
 
 
 		//定义坐标轴样式
-		const xAxis = d3.axisBottom(xScale).ticks(5)//.tickFormat(d3.format('.0%'))
-		const yAxis = d3.axisLeft(yScale).tickSize(0)//Y轴
+		const xAxis = d3.axisBottom(xScale).ticks(5) //.tickFormat(d3.format('.0%'))
+		const yAxis = d3.axisLeft(yScale).tickSize(0) //Y轴
 
 		//绘制坐标轴
 		g.append('g').attr('transform', `translate(0, ${barHeight})`).call(xAxis)
@@ -79,7 +106,6 @@
 
 		//设置坐标轴文本字体大小
 		d3.selectAll('.tick text').attr('font-size', '16px')
-
 	</script>
 </body>
 
