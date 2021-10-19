@@ -9,30 +9,38 @@
   <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.css" rel="stylesheet">
   <script src="../Resources/lib/d3.js"></script>
 </head>
+<style>
+  #redial_tree {
+    border: 1px solid #eee;
+    box-shadow: 5px 5px 5px 1px #eee;
+  }
+</style>
 
 <body>
-  <div class="continue" style="width : 100vw ; height :100vh;background-color: azure;">
+  <div class="continue" style="width : 100vw ; height :100vh;">
     <div class="row" style="width: 100%;">
       <!-- 径向树图 -->
-      <section class="col" id='tree' style="height:100vh;">
-      </section>
-      <section class="col" id='other' style="height:100vh;">
+      <section class="col-6" id='redial_tree' style="height:75vh; margin: 0 auto;">
       </section>
     </div>
+
 
   </div>
 
   <script type="module">
+    import RadialTree from './radial_tree.js'
     // 读取数据
     const create = async () =>  {
 
-      const data = await d3.csv(
+      const data = await d3.json(
         "../../DataVisCode/Resources/data/tokyo2020.json"
       );
       console.log(data)
+      let radialTree = new RadialTree('redial_tree', data);
+      radialTree.setMargin(50,100,50,100).render();
+
     }
     let start = create();
-
 
   </script>
 
