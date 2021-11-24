@@ -53,9 +53,10 @@
 
       const radius = width / 2
       const tree = d3.cluster().size([2 * Math.PI, radius - 100])
+      console.log(data)
       const root = tree(d3.hierarchy(data)
         .sort((a, b) => d3.ascending(a.data.name, b.data.name)));
-
+      console.log(root)
 
       mianSvgGroup.append("g")
         .attr("transform", `translate(${innerWidth / 2},${innerHeight / 2})`)

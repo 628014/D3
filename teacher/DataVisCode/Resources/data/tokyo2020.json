@@ -1,13 +1,10 @@
 {
 	"name": "东京奥运会TOP20",
-	"children": [
-		{
+	"children": [{
 			"name": "亚洲",
-			"children": [
-				{
+			"children": [{
 					"name": "中国",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 38
 						},
@@ -23,8 +20,7 @@
 				},
 				{
 					"name": "日本",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 27
 						},
@@ -40,8 +36,7 @@
 				},
 				{
 					"name": "韩国",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 6
 						},
@@ -59,11 +54,9 @@
 		},
 		{
 			"name": "欧洲",
-			"children": [
-				{
+			"children": [{
 					"name": "英国",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 22
 						},
@@ -79,8 +72,7 @@
 				},
 				{
 					"name": "俄罗斯",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 20
 						},
@@ -96,8 +88,7 @@
 				},
 				{
 					"name": "荷兰",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 10
 						},
@@ -113,8 +104,7 @@
 				},
 				{
 					"name": "法国",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 10
 						},
@@ -130,8 +120,7 @@
 				},
 				{
 					"name": "德国",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 10
 						},
@@ -147,8 +136,7 @@
 				},
 				{
 					"name": "意大利",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 10
 						},
@@ -164,8 +152,7 @@
 				},
 				{
 					"name": "匈牙利",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 6
 						},
@@ -181,8 +168,7 @@
 				},
 				{
 					"name": "波兰",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 4
 						},
@@ -198,8 +184,7 @@
 				},
 				{
 					"name": "捷克",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 4
 						},
@@ -215,8 +200,7 @@
 				},
 				{
 					"name": "挪威",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 4
 						},
@@ -234,11 +218,9 @@
 		},
 		{
 			"name": "大洋洲",
-			"children": [
-				{
+			"children": [{
 					"name": "澳大利亚",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 17
 						},
@@ -254,8 +236,7 @@
 				},
 				{
 					"name": "新西兰",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 7
 						},
@@ -273,11 +254,9 @@
 		},
 		{
 			"name": "北美洲",
-			"children": [
-				{
+			"children": [{
 					"name": "美国",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 39
 						},
@@ -293,8 +272,7 @@
 				},
 				{
 					"name": "加拿大",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 7
 						},
@@ -312,11 +290,9 @@
 		},
 		{
 			"name": "南美洲",
-			"children": [
-				{
+			"children": [{
 					"name": "巴西",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 7
 						},
@@ -332,8 +308,7 @@
 				},
 				{
 					"name": "古巴",
-					"children": [
-						{
+					"children": [{
 							"name": "金牌",
 							"count": 7
 						},
@@ -351,25 +326,22 @@
 		},
 		{
 			"name": "非洲",
-			"children": [
-				{
-					"name": "肯尼亚",
-					"children": [
-						{
-							"name": "金牌",
-							"count": 4
-						},
-						{
-							"name": "银牌",
-							"count": 4
-						},
-						{
-							"name": "铜牌",
-							"count": 2
-						}
-					]
-				}
-			]
-		}	
+			"children": [{
+				"name": "肯尼亚",
+				"children": [{
+						"name": "金牌",
+						"count": 4
+					},
+					{
+						"name": "银牌",
+						"count": 4
+					},
+					{
+						"name": "铜牌",
+						"count": 2
+					}
+				]
+			}]
+		}
 	]
 }
