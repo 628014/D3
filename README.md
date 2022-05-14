@@ -4,15 +4,15 @@
 
 - [D3](#d3)
 - [前期说明](#前期说明)
-- [D3 版本说明](#d3版本说明)
+- [D3 版本说明](#d3-版本说明)
 - [实验一](#实验一)
-  - [1. <a name=''></a>实现内容](#1-实现内容)
-    - [1.1. <a name='-1'></a>绘制生命之树,结果如下：](#11-绘制生命之树结果如下)
-    - [1.2. <a name='-1'></a>绘制径向树图](#12-绘制径向树图)
+  - [1. 实现内容](#1-a-namea实现内容)
+    - [1.1. 绘制生命之树,结果如下：](#11-a-name-1a绘制生命之树结果如下)
+    - [1.2. 绘制径向树图](#12-a-name-1a绘制径向树图)
 - [实验二](#实验二)
-  - [2. <a name='-1'></a>方法](#2-方法)
-    - [`d3.select() `:](#d3select-)
-    - [`Selection.append() `:](#selectionappend-)
+  - [2. 方法](#2-a-name-1a方法)
+    - [`d3.select() `:](#d3select)
+    - [`Selection.append() `:](#selectionappend)
     - [`Selection.insert`:](#selectioninsert)
     - [`Selection.text`:](#selectiontext)
     - [`Selection.html`:](#selectionhtml)
@@ -22,29 +22,30 @@
     - [`Slection.on`](#slectionon)
     - [`Selection.each`](#selectioneach)
     - [`Selection.call`](#selectioncall)
-  - [3. <a name='-1'></a>链式调用](#3-链式调用)
-  - [4. <a name='-1'></a>动态绑定数据](#4-动态绑定数据)
-    - [4.1. <a name='enterupdataexit'></a>enter ,updata, exit](#41-enter-updata-exit)
-    - [4.2. <a name='join'></a>join](#42-join)
-    - [4.3. <a name='merge'></a>merge](#43-merge)
-  - [5. <a name='-1'></a>深入理解数据绑定](#5-深入理解数据绑定)
-    - [5.1. <a name='Selection.data'></a>Selection.data](#51-selectiondata)
-  - [6. <a name='-1'></a>实验结果](#6-实验结果)
+  - [3. 链式调用](#3-a-name-1a链式调用)
+  - [4. 动态绑定数据](#4-a-name-1a动态绑定数据)
+    - [4.1. enter ,updata, exit](#41-a-nameenterupdataexitaenter-updata-exit)
+    - [4.2. join](#42-a-namejoinajoin)
+    - [4.3. merge](#43-a-namemergeamerge)
+  - [5. 深入理解数据绑定](#5-a-name-1a深入理解数据绑定)
+    - [5.1. Selection.data](#51-a-nameselectiondataaselectiondata)
+  - [6. 实验结果](#6-a-name-1a实验结果)
 - [实验三](#实验三)
-  - [7. <a name='-1'></a>实现内容](#7-实现内容)
+  - [7. 实现内容](#7-a-name-1a实现内容)
 - [实验四](#实验四)
-  - [8. <a name='-1'></a>交互事件](#8-交互事件)
-    - [8.1. <a name='click'></a>click](#81-click)
-    - [8.2. <a name='mouseoutmouseovermouseleavemouseenter'></a>mouseout + mouseover + mouseleave + mouseenter](#82-mouseout--mouseover--mouseleave--mouseenter)
-    - [8.3. <a name='drag'></a>drag 拖拽](#83-drag-拖拽)
-    - [8.4. <a name='zoom'></a>zoom 缩放](#84-zoom-缩放)
-    - [8.5. <a name='brushXbrushY'></a>brushX + brushY 刷子](#85-brushx--brushy-刷子)
-  - [9. <a name='-1'></a>生成器](#9-生成器)
-    - [9.1. <a name='-1'></a>符号生成器](#91-符号生成器)
-    - [9.2. <a name='-1'></a>直线生成器 + 曲线生成器](#92-直线生成器--曲线生成器)
-    - [9.3. <a name='-1'></a>面积生成器](#93-面积生成器)
-    - [9.4. <a name='-1'></a>弧生成器](#94-弧生成器)
-    - [9.5. <a name='pie'></a>pie 生成器](#95-pie生成器)
+  - [实现效果](#实现效果)
+  - [8. 交互事件](#8-a-name-1a交互事件)
+    - [8.1. click](#81-a-nameclickaclick)
+    - [8.2. mouseout + mouseover + mouseleave + mouseenter](#82-a-namemouseoutmouseovermouseleavemouseenteramouseout-mouseover-mouseleave-mouseenter)
+    - [8.3. drag 拖拽](#83-a-namedragadrag-拖拽)
+    - [8.4. zoom 缩放](#84-a-namezoomazoom-缩放)
+    - [8.5. brushX + brushY 刷子](#85-a-namebrushxbrushyabrushx-brushy-刷子)
+  - [9. 生成器](#9-a-name-1a生成器)
+    - [9.1. 符号生成器](#91-a-name-1a符号生成器)
+    - [9.2. 直线生成器 + 曲线生成器](#92-a-name-1a直线生成器-曲线生成器)
+    - [9.3. 面积生成器](#93-a-name-1a面积生成器)
+    - [9.4. 弧生成器](#94-a-name-1a弧生成器)
+    - [9.5. pie 生成器](#95-a-namepieapie-生成器)
 
 <!-- /code_chunk_output -->
 
@@ -95,7 +96,7 @@ d3.json('../../../mi/lifeTree/data_5120194818.json').then((data) => {
 })
 ```
 
-![生命之树](../D3/mi/Resources/img/lifeTree.png)
+![生命之树](./Resources/img/lifeTree.png)
 
 #### 1.2. <a name='-1'></a>绘制径向树图
 
@@ -111,7 +112,7 @@ d3.json('../../../mi/tree/data_5120194818.json').then((data) => {
 })
 ```
 
-![径向树图](../D3/mi/Resources/img/horizontalTree.png)
+![径向树图](./Resources/img/horizontalTree.png)
 
 # 实验二
 
@@ -208,7 +209,7 @@ Selection.append,Selection.insert,Selection.select
 
 #### 4.1. <a name='enterupdataexit'></a>enter ,updata, exit
 
-![](../D3/mi/Resources/img/data.png)
+![](./Resources/img/data.png)
 
 `updateSet.enter()` 是一个抽象的集合，(enternode)不含有实际的 DOM 元素，如果要加上数据，可以使用 append 来实现
 `selection.exit().remove()` `exit()`多余的只是在页面上移除了，实际的结点还在
@@ -273,7 +274,7 @@ const createBar = async () => {
 
 绘制图形 ：
 
-![柱状图](../D3/mi/Resources/img/bar.png)
+![柱状图](./Resources/img/bar.png)
 
 # 实验三
 
@@ -304,7 +305,7 @@ const createBar = async () => {
 
 实现效果如下：
 
-![柱状图](../D3/mi/Resources/img/bubble.png)
+![柱状图](./Resources/img/bubble.png)
 
 解决的问题 ：
 
@@ -318,6 +319,10 @@ const createBar = async () => {
 # 实验四
 
 主要讲 d3 的交互事件和生成器的问题
+
+### 实现效果
+
+![径向树图](./Resources/img/1.png)
 
 ### 8. <a name='-1'></a>交互事件
 
